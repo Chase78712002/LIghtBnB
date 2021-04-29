@@ -24,15 +24,15 @@ const getUserWithEmail = function (email) {
   const values = [`%${email}%`];
   return pool
     .query(queryString, values)
-    .then(result => {
+    .then((result) => {
       if (result.rows.length === 0) {
         // no user found returning null
         return null;
       }
       return result.rows[0];
     })
-    .catch(err => { 
-      console.log('errrr', err.message)
+    .catch((err) => {
+      console.log("errrr", err.message);
     });
 };
 exports.getUserWithEmail = getUserWithEmail;
@@ -55,9 +55,9 @@ const getUserWithId = function (id) {
     .then((result) => {
       return result.rows[0];
     })
-    .catch(err => {
-      console.log('getUserWithID error', err.message);
-    })
+    .catch((err) => {
+      console.log("getUserWithID error", err.message);
+    });
 };
 exports.getUserWithId = getUserWithId;
 
@@ -75,17 +75,12 @@ const addUser = function (user) {
   const values = [user.name, user.email, user.password];
   return pool
     .query(queryString, values)
-    .then(result => {
+    .then((result) => {
       return result.rows[0];
     })
-    .catch(err => {
-      console.log('addUser error', err.message);
-    })
-
-
-
-
-
+    .catch((err) => {
+      console.log("addUser error", err.message);
+    });
 };
 exports.addUser = addUser;
 
@@ -97,7 +92,21 @@ exports.addUser = addUser;
  * @return {Promise<[{}]>} A promise to the reservations.
  */
 const getAllReservations = function (guest_id, limit = 10) {
-  return getAllProperties(null, 2);
+  const queryString = `
+  SELECT *
+  FROM reservations
+  JOIN properties ON properties.id = property_id
+  WHERE guest_id = $1
+  LIMIT $2;
+  `;
+  const values = [guest_id, limit];
+
+  return pool
+    .query(queryString, values)
+    .then((result) => {
+      return result.rows;
+    })
+    .catch((err) => console.log("getAllReservations error", err.message));
 };
 exports.getAllReservations = getAllReservations;
 
