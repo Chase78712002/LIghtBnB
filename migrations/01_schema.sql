@@ -1,7 +1,7 @@
--- DROP TABLE IF EXISTS users CASCADE;
--- DROP TABLE IF EXISTS properties CASCADE;
--- DROP TABLE IF EXISTS reservations CASCADE;
--- DROP TABLE IF EXISTS property_reviews CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS properties CASCADE;
+DROP TABLE IF EXISTS reservations CASCADE;
+DROP TABLE IF EXISTS property_reviews CASCADE;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE properties
   province            VARCHAR(255)      NOT NULL,
   post_code           VARCHAR(255)      NOT NULL,
   
-  is_active           boolean           NOT NULL DEFAULT TRUE
+  active           boolean           NOT NULL DEFAULT TRUE
 );
 
 CREATE TABLE reservations

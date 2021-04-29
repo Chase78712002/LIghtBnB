@@ -5,7 +5,7 @@ VALUES
 ('Katherine', 'iamKat@example.com', 'JBIDRh70tGevYzYzQgFId2u'),
 ('Gin', 'ginisI@example.com', '70t10$puzYzQ');
 
-INSERT INTO properties (owner_id, title, description, thumbnail_photo_url, cover_photo_url, cost_per_night, parking_spaces, number_of_bedrooms, number_of_bathrooms, country, street, city, province, post_code, is_active)
+INSERT INTO properties (owner_id, title, description, thumbnail_photo_url, cover_photo_url, cost_per_night, parking_spaces, number_of_bedrooms, number_of_bathrooms, country, street, city, province, post_code, active)
 VALUES
 (4, 'Starfall Manor', 'description', 'https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg','https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg', 3500, 2, 6, 4, 'Canada', '2735 King George', 'Calgary', 'AB', 'A3E I8H', true ),
 (2, 'Southbay Residence', 'description', 'https://images.pexels.com/photos/1172064/pexels-photo-1172064.jpeg', 'https://images.pexels.com/photos/1172064/pexels-photo-1172064.jpeg', 5100, 7, 9, 5, 'Canada', '1689 Haven Street', 'Louiseville', 'QC','J5V 9V2', true),
@@ -25,8 +25,8 @@ VALUES
 
 INSERT INTO property_reviews (guest_id, property_id, reservation_id, rating, message)
 VALUES
-(2, 5 ,3 , 3, messages),
-(1, 4 ,1 , 4, messages),
-(4, 1 ,2 , 4, messages),
-(3, 4 ,5 , 4, messages),
-(4, 2 ,7 , 5, messages);
+(2, 5 ,3 , 3, 'messages'),
+(1, 4 ,1 , 4, 'messages'),
+(4, 1 ,2 , 4, 'messages'),
+(3, 4 ,5 , 4, 'messages'),
+(4, 2 ,4 , 5, 'messages');
