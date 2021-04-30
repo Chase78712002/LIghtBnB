@@ -131,7 +131,7 @@ const getAllProperties = function (options, limit = 10) {
     queryString += `WHERE city LIKE $${queryParams.length} `;
   }
   if (options.owner_id) {
-    queryParams.push(`%${options.owner_id}%`);
+    queryParams.push(options.owner_id);
     if (queryParams.length > 1) {
       queryString += `  AND owner_id = $${queryParams.length}\n`;
     } else {
@@ -172,7 +172,7 @@ const getAllProperties = function (options, limit = 10) {
   LIMIT $${queryParams.length};
   `;
 
-  // console.log(queryString, queryParams);
+  console.log(queryString, queryParams);
 
   return pool
     .query(queryString, queryParams)
